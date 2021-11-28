@@ -22,10 +22,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Models
     'src.blog',
     'src.blog_api',
     'src.users',
 
+    # REST API
     'rest_framework',
     'corsheaders',
 ]
