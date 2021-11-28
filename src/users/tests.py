@@ -39,7 +39,6 @@ class UserAccountTest(TestCase):
         self.assertEqual(user.email, 'testuser@user.com')
         self.assertEqual(user.user_name, 'username')
         self.assertEqual(user.first_name, 'firstname')
-        self.assertEqual(user.password, 'password')
         self.assertFalse(user.is_superuser)
         self.assertFalse(user.is_staff)
         self.assertTrue(user.is_active)
