@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Category, Post
@@ -8,7 +9,13 @@ class TestCreatePost(TestCase):
     @classmethod
     def setUpTestData(cls):
         test_category = Category.objects.create(name='django')
-        test_user = User.objects.create(username='test_user', password='123456789')
+
+        db = get_user_model()
+        user = db.objects.create_user(
+            'testuser@user.com', 'username', 'firstname', 'password'
+        )
+
+
         test_post = Post.objects.create(
             category_id=1,
             title='Post Title',
@@ -29,7 +36,7 @@ class TestCreatePost(TestCase):
         content = f'{post.content}'
         status = f'{post.status}'
 
-        self.assertEqual(author, 'test_user')
+        self.assertEqual(author, 'username')
         self.assertEqual(title, 'Post Title')
         self.assertEqual(content, 'Post Content')
         self.assertEqual(status, 'published')
