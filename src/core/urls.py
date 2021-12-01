@@ -11,11 +11,11 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # Project URLs
     path('admin/', admin.site.urls),
-    path('', include('blog.urls', namespace='blog')),
+    path('', include('src.blog.urls', namespace='blog')),
     # User Management
-    path('api/user/', include('users.urls', namespace='users')),
+    path('api/user/', include('src.users.urls', namespace='users')),
     # Blog_API Application
-    path('api/', include('blog_api.urls', namespace='blog_api')),
+    path('api/', include('src.blog_api.urls', namespace='blog_api')),
 
     # API schema and Documentation
     path('project/docs/', include_docs_urls(title='BlogAPI')),
