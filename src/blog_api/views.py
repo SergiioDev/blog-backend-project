@@ -17,14 +17,17 @@ class PostUserWritePermission(BasePermission):
         return obj.author == request.user
 
 
-class PostList(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
-    serializer_class = PostSerializer
+class PostList(viewsets.ViewSet):
+    #permission_classes = [IsAuthenticated]
+    queryset = Post.post_objects.all()
 
-    def get_object(self, queryset=None, **kwargs):
-        item = self.kwargs.get('pk')
-        return get_object_or_404(Post, slug=item)
+    def list(self, request):
+        serializer = PostSerializer(self.queryset, many=True)
+        return Response(serializer.data)
 
-        # Define Custom QuerySet
-    def get_queryset(self):
-        return Post.objects.all()
+    def retrieve(self, request, pk=None):
+        post = get_object_or_404(self.queryset, pk=pk)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
+
