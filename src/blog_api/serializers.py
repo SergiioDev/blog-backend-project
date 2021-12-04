@@ -6,7 +6,7 @@ from src.core import settings
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('category', 'id', 'title', 'slug', 'author', 'excerpt', 'content', 'status')
+        fields = ('category', 'id', 'title', 'image', 'slug', 'author', 'excerpt', 'content', 'status')
 
     class UserRegisterSerializer(serializers.ModelSerializer):
         email = serializers.EmailField(required=True)

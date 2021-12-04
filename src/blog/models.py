@@ -3,6 +3,10 @@ from django.conf import settings
 from django.utils import timezone
 
 
+def upload_to(instance, filename):
+    return 'posts/{filename}'.format(filename=filename)
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -23,6 +27,7 @@ class Post(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     title = models.CharField(max_length=250)
+    image = models.ImageField("Image", upload_to=upload_to, default='posts/default.jpg')
     excerpt = models.TextField(null=True)
     content = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='published')
