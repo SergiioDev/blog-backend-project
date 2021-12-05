@@ -21,11 +21,11 @@ from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthentic
 class PostList(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = PostSerializer
-    queryset = Post.post_objects.all()
+    queryset = Post.objects.all()
 
 
 class PostDetail(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
+
     serializer_class = PostSerializer
 
     def get_object(self, queryset=None, **kwargs):
@@ -38,7 +38,7 @@ class PostDetail(generics.RetrieveAPIView):
 #    queryset = Post.post_objects.all()
 #    serializer_class = PostSerializer
 class CreatePost(APIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
@@ -54,7 +54,7 @@ class CreatePost(APIView):
 
 class AdminPostDetail(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticated]
-    queryset = Post.post_objects.all()
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
