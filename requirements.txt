@@ -1,2 +1,5 @@
+# Core
 Django~=3.2.9
+
+# REST APIS
 djangorestframework~=3.12.4
