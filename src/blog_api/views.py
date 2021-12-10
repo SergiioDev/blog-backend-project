@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 
 from src.blog.models import Post
 from .serializers import PostSerializer
-from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthenticated
+from rest_framework import viewsets, filters, generics, permissions
 
 
 # class PostUserWritePermission(BasePermission):
@@ -19,7 +19,7 @@ from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthentic
 #   return obj.author == request.user
 
 class PostList(generics.ListAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
 
@@ -38,7 +38,7 @@ class PostDetail(generics.RetrieveAPIView):
 #    queryset = Post.post_objects.all()
 #    serializer_class = PostSerializer
 class CreatePost(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
@@ -53,19 +53,19 @@ class CreatePost(APIView):
 
 
 class AdminPostDetail(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 
 class EditPost(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Post.post_objects.all()
     serializer_class = PostSerializer
 
 
 class DeletePost(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Post.post_objects.all()
     serializer_class = PostSerializer
 

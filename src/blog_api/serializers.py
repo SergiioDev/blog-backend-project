@@ -15,5 +15,5 @@ class PostSerializer(serializers.ModelSerializer):
 
         class Meta:
             model = settings.AUTH_USER_MODEL
-            fields = ('email', 'user_name', 'first_name')
+            fields = ('email', 'username', 'first_name')
             extra_kwargs = {'password': {'write_only': True}}
