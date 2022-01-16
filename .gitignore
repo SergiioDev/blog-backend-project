@@ -124,3 +124,8 @@ GitHub.sublime-settings
 
 # Idea directory
 .idea
+htmlcov
+
+/media/*
+
+.dockerignore
