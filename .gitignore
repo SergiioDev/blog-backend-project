@@ -127,3 +127,5 @@ GitHub.sublime-settings
 htmlcov
 
 /media/*
+
+.dockerignore
