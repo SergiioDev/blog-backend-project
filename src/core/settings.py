@@ -156,8 +156,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<643591953867-cq76ndgeeqlb2vsjsdd03jkus8i8d6vp.apps.googleusercontent.com>'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<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>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = str(os.environ.get("GOOGLE_CLIENT_KEY"))
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.environ.get("GOOGLE_CLIENT_SECRET"))
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.email',
