@@ -12,9 +12,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('src.blog.urls', namespace='blog')),
     # User Management
-    path('api/user/', include('src.users.urls', namespace='users')),
+    path('api/users/', include('src.users.urls', namespace='users')),
     # Blog_API Application
-    path('api/', include('src.blog_api.urls', namespace='blog_api')),
+    path('api/posts', include('src.blog_api.urls', namespace='blog_api')),
 
     # API schema and Documentation
     path('project/docs/', include_docs_urls(title='BlogAPI')),
